@@ -20,7 +20,7 @@ const Home: React.FC = () => {
   return (
     <section
       id="home"
-      className="relative md:min-h-screen h-[100svh] flex py-10 md:flex-row flex-col items-center justify-center overflow-hidden"
+      className="relative md:min-h-screen h-[100svh] flex py-10 md:flex-row flex-col items-center justify-evenly overflow-hidden"
     >
       <div
         data-aos="fade-right"
@@ -47,7 +47,7 @@ const Home: React.FC = () => {
         <img
           src={mainImg}
           alt="The picture depicts the owner of the website"
-          className="md:w-11/12 w-[80wv] object-cover"
+          className="md:w-11/12 object-cover"
         />
       </div>
       <div className="md:flex-1 flex items-center">
