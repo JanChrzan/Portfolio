@@ -28,6 +28,15 @@ const HeaderNavbar: React.FC = () => {
     return () => unsubscribe();
   }, []);
 
+  useEffect(() => {
+    if (isOpen) {
+      document.addEventListener("touchmove", handleClick);
+      return () => {
+        document.removeEventListener("touchmove", handleClick);
+      };
+    }
+  }, [isOpen]);
+
   const handleClick = () => {
     store.dispatch({ type: "TOGGLE_IS_OPEN" });
   };
