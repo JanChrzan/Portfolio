@@ -4,6 +4,7 @@ import { store } from "../../store/Store";
 import { navRouter } from "../../utils/navRouter";
 import MobileNavbar from "./MobileNavbar";
 import NavbarIcon from "../minor/NavbarIcon";
+import { useScrollBlock } from "../../utils/useScrollBlock";
 import Scrollspy from "react-scrollspy";
 
 import logo from "../../assets/images/logo.svg";
@@ -11,11 +12,12 @@ import logo from "../../assets/images/logo.svg";
 const StickyNavbar: React.FC = () => {
   const [isSticky, setIsSticky] = useState(false);
   const [isOpen, setIsOpen] = useState(store.getState().isOpen);
+  const [blockScroll, allowScroll] = useScrollBlock();
 
   const { t } = useTranslation();
 
   useEffect(() => {
-    document.body.style.overflow = isOpen ? "hidden" : "visible";
+    isOpen ? blockScroll() : allowScroll();
 
     const unsubscribe = store.subscribe(() => {
       setIsOpen(store.getState().isOpen);
@@ -78,7 +80,7 @@ const StickyNavbar: React.FC = () => {
               ))}
               <li className="ml-3 border rounded border-Aquamarine text-Aquamarine hover:bg-Aquamarine/[.10] duration-300">
                 <a
-                  href="./src/assets/doc/resume.pdf"
+                  href="https://drive.google.com/file/d/1kBHrOZg_ak9yFX1rxk4w55NJBhzrBt5N/view"
                   target="_blank"
                   className="block px-6 py-2"
                 >

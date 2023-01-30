@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useScrollBlock } from "../../utils/useScrollBlock";
 import IonIcon from "@reacticons/ionicons";
 import FormModal from "../minor/FormModal";
 import SectionTitle from "../minor/SectionTitle";
@@ -9,18 +10,18 @@ import axios from "axios";
 import map from "../../assets/images/map.png";
 
 const Contact: React.FC = () => {
-  const { t } = useTranslation();
-  const sectionTitle = t("contact").split(" ");
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalTitle, setModalTitle] = useState("");
+  const [modalMessage, setModalMessage] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
+  const [blockScroll, allowScroll] = useScrollBlock();
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalTitle, setModalTitle] = useState("");
-  const [modalMessage, setModalMessage] = useState("");
+  const { t } = useTranslation();
+  const sectionTitle = t("contact").split(" ");
 
   const handleChange = (
     e:
@@ -80,7 +81,7 @@ const Contact: React.FC = () => {
   };
 
   useEffect(() => {
-    document.body.style.overflow = isModalOpen ? "hidden" : "visible";
+    isModalOpen ? blockScroll() : allowScroll();
   }, [isModalOpen]);
 
   return (

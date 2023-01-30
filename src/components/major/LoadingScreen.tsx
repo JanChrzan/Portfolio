@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useScrollBlock } from "../../utils/useScrollBlock";
 
 import logo from "../../assets/images/logo.svg";
 
@@ -12,9 +13,10 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({
   setIsLoading,
 }) => {
   const [isLoadingDelay, setIsLoadingDelay] = useState(true);
+  const [blockScroll, allowScroll] = useScrollBlock();
 
   useEffect(() => {
-    document.body.style.overflow = isLoadingDelay ? "hidden" : "visible";
+    isLoadingDelay ? blockScroll() : allowScroll();
   }, [isLoadingDelay]);
 
   useEffect(() => {
