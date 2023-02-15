@@ -48,6 +48,7 @@ const Projects: FC = () => {
                       target="_blank"
                       className="text-3xl hover:text-Aquamarine cursor-pointer hover:-translate-y-1 duration-300"
                       rel="noopener noreferrer"
+                      aria-label="Source code on Github"
                     >
                       <IonIcon name="logo-github" />
                     </a>
@@ -56,6 +57,7 @@ const Projects: FC = () => {
                       target="_blank"
                       className="text-3xl hover:text-Aquamarine cursor-pointer hover:-translate-y-1 duration-300"
                       rel="noopener noreferrer"
+                      aria-label="Open the live project"
                     >
                       <IonIcon name="pulse-outline" />
                     </a>

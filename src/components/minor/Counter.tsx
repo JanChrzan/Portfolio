@@ -37,7 +37,7 @@ const Counter: FC = () => {
       {Data.map((value, index) => (
         <div className="sm:w-1/4 w-1/3" key={index}>
           <div className="flex justify-center">
-            <h5 className="md:text-3xl text-2xl font-semibold text-white">
+            <p className="md:text-3xl text-2xl font-semibold text-white">
               <VisibilitySensor
                 onChange={onVisibilityChange}
                 offset={{ top: 10 }}
@@ -45,7 +45,7 @@ const Counter: FC = () => {
               >
                 <CountUp end={didViewCountUp ? value.countNum : 0} />
               </VisibilitySensor>
-            </h5>
+            </p>
             <p className="text-Aquamarine md:text-4xl text-3xl font-semibold -translate-y-2">
               +
             </p>
