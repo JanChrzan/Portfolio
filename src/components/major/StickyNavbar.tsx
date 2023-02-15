@@ -56,7 +56,7 @@ const StickyNavbar: FC = () => {
             isOpen ? "opacity-0 md:opacity-100" : "opacity-100"
           }`}
         >
-          <img src={logo} alt="Site logo" className="h-12" />
+          <img src={logo} alt="Site logo" className="h-12 w-auto" />
         </div>
         <div className="md:pr-11 py-1 md:block hidden text-white duration-300">
           <ul>

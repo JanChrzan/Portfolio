@@ -26,14 +26,14 @@ const ButtonChangeLanguage: FC = () => {
           src={pl}
           onClick={() => handleLanguageChange("pl")}
           alt="Polish flag"
-          className="h-4 md:h-6"
+          className="h-4 w-auto md:h-6"
         />
       ) : (
         <img
           src={en}
           onClick={() => handleLanguageChange("en")}
           alt="English flag"
-          className="h-4 md:h-6"
+          className="h-4 w-auto md:h-6"
         />
       )}
     </div>

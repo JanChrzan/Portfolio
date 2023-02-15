@@ -55,7 +55,7 @@ const HeaderNavbar: FC = () => {
               isOpen ? "opacity-0" : "opacity-100"
             }`}
           >
-            <img src={logo} alt="Site logo" className="h-12" />
+            <img src={logo} alt="Site logo" className="h-12 w-auto" />
           </div>
           <div className="md:block hidden px-7 py-2 rounded-bl-full text-Navy bg-white duration-300">
             <ul className="flex items-center gap-1 py-2 text-sm">

@@ -47,7 +47,7 @@ const Home: FC = () => {
         <img
           src={mainImg}
           alt="The picture depicts the owner of the website"
-          className="md:w-11/12 object-cover"
+          className="md:w-11/12 h-full w-full object-cover"
         />
       </div>
       <div className="md:flex-1 flex items-center">
@@ -64,12 +64,12 @@ const Home: FC = () => {
             </span>
             Jan Chrzan
           </h1>
-          <h4 className="text-2xl md:leading-normal leading-5 mt-4 font-bold text-Cool-Grey md:hidden">
+          <h2 className="text-2xl md:leading-normal leading-5 mt-4 font-bold text-Cool-Grey md:hidden">
             Fullstack Developer
-          </h4>
-          <h4 className="md:leading-normal mt-4 text-sm text-Cool-Grey hidden md:block w-2/3">
+          </h2>
+          <h3 className="md:leading-normal mt-4 text-sm text-Cool-Grey hidden md:block w-2/3">
             {t("description")}
-          </h4>
+          </h3>
           <Button
             className={"mt-8"}
             onClick={() => {
