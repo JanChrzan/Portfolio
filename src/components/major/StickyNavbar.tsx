@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState, FC } from "react";
 import { useTranslation } from "react-i18next";
 import { store } from "../../store/Store";
 import { navRouter } from "../../utils/navRouter";
 import MobileNavbar from "./MobileNavbar";
 import NavbarIcon from "../minor/NavbarIcon";
 import { useScrollBlock } from "../../utils/useScrollBlock";
+import { handleClick } from "../../utils/handleClick";
 import Scrollspy from "react-scrollspy";
 
 import logo from "../../assets/images/logo.svg";
 
-const StickyNavbar: React.FC = () => {
-  const [isSticky, setIsSticky] = useState(false);
-  const [isOpen, setIsOpen] = useState(store.getState().isOpen);
+const StickyNavbar: FC = () => {
+  const [isSticky, setIsSticky] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(store.getState().isOpen);
   const [blockScroll, allowScroll] = useScrollBlock();
 
   const { t } = useTranslation();
@@ -24,10 +25,6 @@ const StickyNavbar: React.FC = () => {
     });
     return () => unsubscribe();
   }, [isOpen]);
-
-  const handleClick = () => {
-    store.dispatch({ type: "TOGGLE_IS_OPEN" });
-  };
 
   let prevScrollY = 0;
 

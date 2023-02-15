@@ -1,18 +1,15 @@
-import React from "react";
+import { FC, Dispatch, SetStateAction } from "react";
 import { useTranslation } from "react-i18next";
 import Button from "./Button";
+import { handleCloseModal } from "../../utils/handleCloseModal";
 
-interface FormModalProps {
+type FormModalProps = {
   title: string;
   message: string;
-  handleClose?: () => void | undefined;
-}
+  setIsModalOpen: Dispatch<SetStateAction<boolean>>;
+};
 
-const FormModal: React.FC<FormModalProps> = ({
-  title,
-  message,
-  handleClose,
-}) => {
+const FormModal: FC<FormModalProps> = ({ title, message, setIsModalOpen }) => {
   const { t } = useTranslation();
   return (
     <div className={`z-50`}>
@@ -23,7 +20,10 @@ const FormModal: React.FC<FormModalProps> = ({
           <p>{message}</p>
         </div>
         <div className="flex justify-end">
-          <Button onClick={handleClose} text={t("modalButton")} />
+          <Button
+            onClick={() => handleCloseModal(setIsModalOpen)}
+            text={t("modalButton")}
+          />
         </div>
       </div>
     </div>

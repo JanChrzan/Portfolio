@@ -1,19 +1,21 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState, FC, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useScrollBlock } from "../../utils/useScrollBlock";
 import IonIcon from "@reacticons/ionicons";
 import FormModal from "../minor/FormModal";
 import SectionTitle from "../minor/SectionTitle";
 import Button from "../minor/Button";
-import axios from "axios";
+import { FormData } from "../../utils/TypeFormData";
+import { handleChange } from "../../utils/handleChange";
+import { handleSubmit } from "../../utils/handleSubmit";
 
 import map from "../../assets/images/map.png";
 
-const Contact: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalTitle, setModalTitle] = useState("");
-  const [modalMessage, setModalMessage] = useState("");
-  const [formData, setFormData] = useState({
+const Contact: FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [modalTitle, setModalTitle] = useState<string>("");
+  const [modalMessage, setModalMessage] = useState<string>("");
+  const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     message: "",
@@ -23,66 +25,14 @@ const Contact: React.FC = () => {
   const { t } = useTranslation();
   const sectionTitle = t("contact").split(" ");
 
-  const handleChange = (
-    e:
-      | React.ChangeEvent<HTMLInputElement>
-      | React.ChangeEvent<HTMLTextAreaElement>
-  ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    if (!formData.name || !formData.email || !formData.message) {
-      setIsModalOpen(true);
-      setModalTitle(t("modalErrorTitle").toString());
-      setModalMessage(t("modalErrorEmpty").toString());
-      return;
-    }
-
-    const emailRegex =
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (!emailRegex.test(formData.email)) {
-      setIsModalOpen(true);
-      setModalTitle(t("modalErrorTitle").toString());
-      setModalMessage(t("modalErrorEmail").toString());
-      return;
-    }
-
-    axios
-      .post("https://serverportfolio.herokuapp.com/api/form", formData, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-      .then(() => {
-        setIsModalOpen(true);
-        setModalTitle(t("modalTitle").toString());
-        setModalMessage(t("modalMessage").toString());
-        setFormData({
-          name: "",
-          email: "",
-          message: "",
-        });
-      })
-      .catch(() => {
-        setIsModalOpen(true);
-        setModalTitle(t("modalErrorTitle").toString());
-        setModalMessage(t("modalErrorMessage").toString());
-      });
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
-
   useEffect(() => {
     isModalOpen ? blockScroll() : allowScroll();
   }, [isModalOpen]);
+
+  const handleChangeCallback = useCallback(
+    handleChange({ formData, setFormData }),
+    [formData]
+  );
 
   return (
     <section
@@ -91,9 +41,9 @@ const Contact: React.FC = () => {
     >
       {isModalOpen && (
         <FormModal
-          handleClose={handleCloseModal}
           title={modalTitle}
           message={modalMessage}
+          setIsModalOpen={setIsModalOpen}
         />
       )}
       <div className="text-center w-full">
@@ -108,7 +58,17 @@ const Contact: React.FC = () => {
         >
           <form
             className="flex flex-col md:w-1/2"
-            onSubmit={handleSubmit}
+            onSubmit={(event) =>
+              handleSubmit({
+                e: event,
+                formData,
+                setFormData,
+                t,
+                setIsModalOpen,
+                setModalTitle,
+                setModalMessage,
+              })
+            }
             noValidate={true}
           >
             <label
@@ -125,7 +85,7 @@ const Contact: React.FC = () => {
                 className="bg-Space-Cadet shadow-sm focus:ring-Aquamarine focus:border-Aquamarine block w-full sm:text-sm px-4 rounded border-none"
                 placeholder={t("namePlaceholder").toString()}
                 value={formData.name}
-                onChange={handleChange}
+                onChange={handleChangeCallback}
               />
             </div>
             <label
@@ -142,7 +102,7 @@ const Contact: React.FC = () => {
                 className="bg-Space-Cadet shadow-sm focus:ring-Aquamarine focus:border-Aquamarine block w-full sm:text-sm px-4 rounded border-none"
                 placeholder={t("mailPlaceholder").toString()}
                 value={formData.email}
-                onChange={handleChange}
+                onChange={handleChangeCallback}
               />
             </div>
             <label
@@ -159,7 +119,7 @@ const Contact: React.FC = () => {
                 placeholder={t("messagePlaceholder").toString()}
                 rows={10}
                 value={formData.message}
-                onChange={handleChange}
+                onChange={handleChangeCallback}
               />
             </div>
             <Button

@@ -1,9 +1,9 @@
-import React from "react";
+import { FC } from "react";
 import { socialMediaIcon } from "../../utils/socialMediaIcon";
 import { handleClickIcon } from "../../utils/handleClickIcon";
 import IonIcon from "@reacticons/ionicons";
 
-const SideSocialMediaIcon: React.FC = () => {
+const SideSocialMediaIcon: FC = () => {
   return (
     <div className="py-8 text-3xl flex flex-col items-center md:justify-start justify-center gap-5">
       {socialMediaIcon.map((el) => (

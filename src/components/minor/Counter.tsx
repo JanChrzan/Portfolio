@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import { useState, FC } from "react";
 import CountUp from "react-countup";
 import VisibilitySensor from "react-visibility-sensor";
 import { useTranslation } from "react-i18next";
 
-const Counter: React.FC = () => {
-  const [didViewCountUp, setDidViewCountUp] = useState(false);
+const Counter: FC = () => {
+  const [didViewCountUp, setDidViewCountUp] = useState<boolean>(false);
   const { t } = useTranslation();
 
   const onVisibilityChange = (isVisible: boolean) => {

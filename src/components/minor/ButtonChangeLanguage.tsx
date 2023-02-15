@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import { useState, FC } from "react";
 import { useTranslation } from "react-i18next";
 import { useIsVisible } from "../../utils/scrollState";
 
 import en from "../../assets/iconLang/en.svg";
 import pl from "../../assets/iconLang/pl.svg";
 
-const ButtonChangeLanguage: React.FC = () => {
+const ButtonChangeLanguage: FC = () => {
   const { i18n } = useTranslation();
   const [language, setLanguage] = useState<string>(i18n.language);
   const isVisible = useIsVisible();

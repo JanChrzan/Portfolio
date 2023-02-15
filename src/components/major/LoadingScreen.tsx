@@ -1,18 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, FC } from "react";
 import { useScrollBlock } from "../../utils/useScrollBlock";
 
 import logo from "../../assets/images/logo.svg";
 
-interface LoadingScreenProps {
+type LoadingScreenProps = {
   isLoading: boolean;
   setIsLoading: (isLoading: boolean) => void;
-}
+};
 
-const LoadingScreen: React.FC<LoadingScreenProps> = ({
-  isLoading,
-  setIsLoading,
-}) => {
-  const [isLoadingDelay, setIsLoadingDelay] = useState(true);
+const LoadingScreen: FC<LoadingScreenProps> = ({ isLoading, setIsLoading }) => {
+  const [isLoadingDelay, setIsLoadingDelay] = useState<boolean>(true);
   const [blockScroll, allowScroll] = useScrollBlock();
 
   useEffect(() => {

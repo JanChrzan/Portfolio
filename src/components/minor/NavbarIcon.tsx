@@ -1,11 +1,11 @@
-import React from "react";
+import { FC } from "react";
 
-interface NavbarIconProps {
+type NavbarIconProps = {
   handleClick: () => void;
   isOpen: boolean;
-}
+};
 
-const NavbarIcon: React.FC<NavbarIconProps> = ({ handleClick, isOpen }) => {
+const NavbarIcon: FC<NavbarIconProps> = ({ handleClick, isOpen }) => {
   return (
     <div
       id="nav-icon"

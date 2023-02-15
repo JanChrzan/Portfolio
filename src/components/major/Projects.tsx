@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { useTranslation } from "react-i18next";
 import { projectsTable } from "../../utils/projectsTable";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -8,7 +8,7 @@ import "swiper/css/pagination";
 import SectionTitle from "../minor/SectionTitle";
 import IonIcon from "@reacticons/ionicons";
 
-const Projects: React.FC = () => {
+const Projects: FC = () => {
   const { t } = useTranslation();
   const sectionTitle = t("projects").split(" ");
   return (

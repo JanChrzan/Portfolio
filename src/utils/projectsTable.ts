@@ -1,12 +1,12 @@
 import sample from "../assets/images/sample.svg";
 
-interface ProjectTable {
+type ProjectTable = {
   img: string;
   name: string;
   technologies: string;
   githubLink: string;
   liveLink: string;
-}
+};
 
 export const projectsTable: ProjectTable[] = [
   {

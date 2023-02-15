@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export const useIsVisible = (): boolean => {
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState<boolean>(true);
 
   useEffect(() => {
     window.addEventListener("scroll", () => {

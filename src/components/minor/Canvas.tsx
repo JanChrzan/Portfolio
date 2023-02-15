@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import { useEffect, FC } from "react";
 import { skills } from "../../utils/skillsIconCanvas";
 
-const Canvas: React.FC = () => {
+const Canvas: FC = () => {
   useEffect(() => {
     //console.log("Loading TagCanvas...");
     // @ts-ignore
@@ -53,7 +53,7 @@ const Canvas: React.FC = () => {
           {skills.map((skill) => (
             <li key={skill.title}>
               <a href={skill.href}>
-                <img src={skill.img} />
+                <img src={skill.img} alt="Skill icon" />
               </a>
             </li>
           ))}

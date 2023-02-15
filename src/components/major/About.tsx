@@ -1,10 +1,10 @@
-import React from "react";
+import { FC } from "react";
 import { useTranslation } from "react-i18next";
 import Canvas from "../minor/Canvas";
 import Counter from "../minor/Counter";
 import SectionTitle from "../minor/SectionTitle";
 
-const About: React.FC = () => {
+const About: FC = () => {
   const { t } = useTranslation();
   const sectionTitle = t("about").split(" ");
 

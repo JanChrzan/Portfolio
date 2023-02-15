@@ -1,16 +1,17 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState, FC } from "react";
 import { useTranslation } from "react-i18next";
 import { store } from "../../store/Store";
 import { navRouter } from "../../utils/navRouter";
 import NavbarIcon from "../minor/NavbarIcon";
 import { useIsVisible } from "../../utils/scrollState";
+import { handleClick } from "../../utils/handleClick";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 import logo from "../../assets/images/logo.svg";
 
-const HeaderNavbar: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(store.getState().isOpen);
+const HeaderNavbar: FC = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(store.getState().isOpen);
   const isVisible = useIsVisible();
 
   const { t } = useTranslation();
@@ -36,10 +37,6 @@ const HeaderNavbar: React.FC = () => {
       };
     }
   }, [isOpen]);
-
-  const handleClick = () => {
-    store.dispatch({ type: "TOGGLE_IS_OPEN" });
-  };
 
   return (
     <div

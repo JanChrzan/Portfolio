@@ -1,16 +1,16 @@
-import React from "react";
+import { FC } from "react";
 import { navRouter } from "../../utils/navRouter";
 import { socialMediaIcon } from "../../utils/socialMediaIcon";
 import { handleClickIcon } from "../../utils/handleClickIcon";
 import { useTranslation } from "react-i18next";
 import IonIcon from "@reacticons/ionicons";
 
-interface Props {
+type MobileNavbarProps = {
   handleClick: () => void;
   isOpen: boolean;
-}
+};
 
-const MobileNavbar: React.FC<Props> = ({ handleClick, isOpen }) => {
+const MobileNavbar: FC<MobileNavbarProps> = ({ handleClick, isOpen }) => {
   const { t } = useTranslation();
 
   return (

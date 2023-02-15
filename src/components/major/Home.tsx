@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect, FC } from "react";
 import { useTranslation } from "react-i18next";
 import ButtonChangeLanguage from "../minor/ButtonChangeLanguage";
 import SideSocialMediaIcon from "../minor/SideSocialMediaIcon";
@@ -8,7 +8,7 @@ import "aos/dist/aos.css";
 
 import mainImg from "../../assets/images/hero.png";
 
-const Home: React.FC = () => {
+const Home: FC = () => {
   useEffect(() => {
     AOS.init({
       once: true,

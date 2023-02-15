@@ -1,12 +1,12 @@
-import React from "react";
+import { FC } from "react";
 
-interface SectionTitleProps {
+type SectionTitleProps = {
   firstPartTitle: string;
   secondPartTitle: string;
   subTitle: string;
-}
+};
 
-const SectionTitle: React.FC<SectionTitleProps> = ({
+const SectionTitle: FC<SectionTitleProps> = ({
   firstPartTitle,
   secondPartTitle,
   subTitle,

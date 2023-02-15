@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import SkillSquareElement from "../minor/SkillSquareElement";
 import SectionTitle from "../minor/SectionTitle";
 import { useTranslation } from "react-i18next";
@@ -12,7 +12,7 @@ import questionMark from "../../assets/iconSkills/question-mark.svg";
 import learning from "../../assets/iconSkills/learning.svg";
 import people from "../../assets/iconSkills/people.svg";
 
-const Skills: React.FC = () => {
+const Skills: FC = () => {
   const { t } = useTranslation();
   const sectionTitle = t("skills").split(" ");
   return (

@@ -1,14 +1,14 @@
-import React from "react";
+import { FC } from "react";
 
-interface SkillSquareElementProps {
+type SkillSquareElementProps = {
   img: string;
   alt: string;
   title: string;
   description: string;
   background: string;
-}
+};
 
-const SkillSquareElement: React.FC<SkillSquareElementProps> = ({
+const SkillSquareElement: FC<SkillSquareElementProps> = ({
   img,
   alt,
   title,

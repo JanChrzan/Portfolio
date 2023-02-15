@@ -23,11 +23,11 @@ import playwright from "../assets/icon/playwright.svg";
 import vite from "../assets/icon/vite.svg";
 import jest from "../assets/icon/jest.svg";
 
-interface Skills {
+type Skills = {
   href: string;
   title: string;
   img: string;
-}
+};
 
 export const skills: Skills[] = [
   { href: "#html_", title: "HTML", img: `${html}` },
