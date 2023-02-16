@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { FormData } from "../../utils/TypeFormData";
 
 const formSchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -6,8 +7,4 @@ const formSchema = new mongoose.Schema({
   message: { type: String, required: true },
 });
 
-export const Form = mongoose.model<{
-  name: string;
-  email: string;
-  message: string;
-}>("Form", formSchema);
+export const Form = mongoose.model<FormData>("Form", formSchema);
